@@ -4,8 +4,6 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.widget.TextView;
 
-import org.json.JSONException;
-
 import cn.edu.gdmec.android.mobileguard.m1home.utils.MyUtils;
 import cn.edu.gdmec.android.mobileguard.m1home.utils.VersionUpdateUtils;
 
@@ -25,12 +23,7 @@ public class SplashActivity extends AppCompatActivity {
             @Override
             public void run() {
                 super.run();
-                try {
-                    versionUpdateUtils.getCloudVersion();
-                } catch (JSONException e) {
-                    e.printStackTrace();
-                }
-
+                versionUpdateUtils.getCloudVersion();
             }
 
         }.start();
