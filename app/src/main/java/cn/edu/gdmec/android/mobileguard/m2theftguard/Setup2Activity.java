@@ -4,7 +4,6 @@ import android.content.SharedPreferences;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.telecom.TelecomManager;
 import android.telephony.TelephonyManager;
 import android.text.TextUtils;
 import android.view.View;
@@ -78,7 +77,7 @@ public class Setup2Activity extends BaseSetupActivity implements View.OnClickLis
             mBindSIMBtn.setEnabled(false);
         }else{
             //已经绑定，提醒用户
-            Toast.makeText(this,"SIM卡已经绑定",Toast.LENGTH_LONG).show();
+            Toast.makeText(this,"SIM卡已经绑定！",Toast.LENGTH_LONG).show();
             mBindSIMBtn.setEnabled(false);
         }
     }

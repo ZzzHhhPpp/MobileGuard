@@ -11,9 +11,7 @@ import java.util.List;
 import cn.edu.gdmec.android.mobileguard.R;
 import cn.edu.gdmec.android.mobileguard.m2theftguard.entity.ContactInfo;
 
-/**
- * Created by DONG on 2017/10/20.
- */
+
 
 public class ContactAdapter extends BaseAdapter {
     private List<ContactInfo> contactInfos;
@@ -40,7 +38,7 @@ public class ContactAdapter extends BaseAdapter {
     }
 
     @Override
-    public View getView(int i, View view, ViewGroup parent) {
+    public View getView(int i, View view, ViewGroup viewGroup) {
         ViewHolder holder = null;
         if (view == null){
             view = View.inflate(context, R.layout.item_list_contact_select, null);
