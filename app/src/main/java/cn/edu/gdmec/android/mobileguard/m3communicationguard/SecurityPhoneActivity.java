@@ -100,7 +100,7 @@ public class SecurityPhoneActivity extends AppCompatActivity implements View.OnC
     }
 
     @Override
-    public void onCreate(Bundle savedInstanceState) {
+    protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_security_phone);
         getSupportActionBar().hide();//去除标题栏
@@ -123,8 +123,8 @@ public class SecurityPhoneActivity extends AppCompatActivity implements View.OnC
     }
 
     @Override
-    protected void onRestart() {
-        super.onRestart();
+    protected void onResume() {
+        super.onResume();
         if (dao.getTotalNumber()>0){
             mHaveBlackNumber.setVisibility(View.VISIBLE);
             mNoBlackNumber.setVisibility(View.GONE);

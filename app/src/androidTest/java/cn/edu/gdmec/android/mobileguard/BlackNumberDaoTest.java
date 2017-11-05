@@ -67,7 +67,7 @@ public class BlackNumberDaoTest {
     @Test
     public void t4GetBlackContactMode() throws Exception{
         BlackNumberDao dao = new BlackNumberDao(context);
-        int mode = dao.getBlackContactMode(13500000008l + "");
+        int mode = dao.getBlackContactMode(13500000000l + "");
         Log.i("TestBlackNumberDao",mode + "");
     }
 
@@ -81,7 +81,7 @@ public class BlackNumberDaoTest {
     @Test
     public void t6IsNumberExist() throws Exception{
         BlackNumberDao dao = new BlackNumberDao(context);
-        boolean isExist = dao.IsNumberExist(13500000008l+"");
+        boolean isExist = dao.IsNumberExist(13500000000l+"");
         if (isExist){
             Log.i("TestBlackNumberDao","该号码在数据库中");
         }else{
