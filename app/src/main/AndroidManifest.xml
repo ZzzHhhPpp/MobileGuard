@@ -71,7 +71,7 @@
             </intent-filter>
         </receiver>
         <receiver
-            android:name=".m3communicationguard.receiver.InterceptCallReciever"
+            android:name=".m3communicationguard.receiver.InterceptCallReceiver"
             android:enabled="true"
             android:exported="true">
             <intent-filter android:priority="2147483647">
