@@ -20,6 +20,7 @@ public class AppInfo
     public long firstInstallTime;
     public String signature;
     public String requestedPermissions;
+    public String returnActivity;
 
     public String getAppLocation(boolean isInRoom){
         if (isInRoom){

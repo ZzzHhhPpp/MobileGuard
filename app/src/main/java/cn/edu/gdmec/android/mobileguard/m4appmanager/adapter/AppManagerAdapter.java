@@ -177,6 +177,9 @@ public class AppManagerAdapter extends BaseAdapter {
                 case R.id.tv_description_app:
                     EngineUtils.show1(context,appInfo);
                     break;
+                case R.id.tv_activity_app:
+                    EngineUtils.returnpack(context,appInfo);
+                    break;
             }
         }
     }
