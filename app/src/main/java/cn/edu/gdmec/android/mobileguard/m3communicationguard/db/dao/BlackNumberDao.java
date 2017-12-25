@@ -13,51 +13,53 @@ import java.util.List;
 import cn.edu.gdmec.android.mobileguard.m3communicationguard.db.BlackNumberOpenHelper;
 import cn.edu.gdmec.android.mobileguard.m3communicationguard.entity.BlackContactInfo;
 
-
+/**
+ * Created by killer on 2017/11/2.
+ */
 
 public class BlackNumberDao {
     private BlackNumberOpenHelper blackNumberOpenHelper;
-
     public BlackNumberDao(Context context){
         super();
         blackNumberOpenHelper = new BlackNumberOpenHelper(context,"blackNumber.db",null,1);
+
     }
 
     public boolean add(BlackContactInfo blackContactInfo){
         SQLiteDatabase db = blackNumberOpenHelper.getWritableDatabase();
         ContentValues values = new ContentValues();
         if (blackContactInfo.phoneNumber.startsWith("+86")){
-            blackContactInfo.phoneNumber = blackContactInfo.phoneNumber.substring(3,blackContactInfo.phoneNumber.length());
-
+            blackContactInfo.phoneNumber = blackContactInfo.phoneNumber
+                    .substring(3,blackContactInfo.phoneNumber.length());
         }
         values.put("number",blackContactInfo.phoneNumber);
         values.put("name",blackContactInfo.contactName);
         values.put("mode",blackContactInfo.mode);
-        values.put("type",blackContactInfo.type);
+        values.put("type", blackContactInfo.type);
         long rowid = db.insert("blacknumber",null,values);
-        if (rowid == -1){
+        if (rowid==-1){
             return false;
-        }else {
+        }else{
             return true;
         }
     }
 
     public boolean detele(BlackContactInfo blackContactInfo){
         SQLiteDatabase db = blackNumberOpenHelper.getWritableDatabase();
-        int rownumber = db.delete("blacknumber","number=?",new String[]{blackContactInfo.phoneNumber});
-        if (rownumber==0){
+        int rownumber = db.delete("blacknumber","number=?",new String[]{ blackContactInfo.phoneNumber });
+        if (rownumber == 0){
             return false;
-        }else {
+        }else{
             return true;
         }
     }
 
-    public List<BlackContactInfo> getPageBlackNumber(int pagenumber,
-                                                     int pagesize){
+    public List<BlackContactInfo> getPageBlackNumber(int pagenumber,int pagesize){
         SQLiteDatabase db = blackNumberOpenHelper.getReadableDatabase();
-        Cursor cursor = db.rawQuery("select number,mode,name,type from blacknumber limit ? offset ?",
-                new String[]{String.valueOf(pagesize),
-                        String.valueOf(pagesize * pagenumber)});
+        Cursor cursor = db.rawQuery(
+                "select number,mode,name,type from blacknumber limit ? offset ?",
+                new String[] {String.valueOf(pagesize),
+                        String.valueOf(pagesize*pagenumber)});
         List<BlackContactInfo> mBlackContactInfos = new ArrayList<BlackContactInfo>();
         while (cursor.moveToNext()){
             BlackContactInfo info = new BlackContactInfo();
@@ -75,8 +77,7 @@ public class BlackNumberDao {
 
     public boolean IsNumberExist(String number){
         SQLiteDatabase db = blackNumberOpenHelper.getReadableDatabase();
-        Cursor cursor = db.query("blacknumber",null,"number=?",
-                new String[]{number},null,null,null);
+        Cursor cursor = db.query("blacknumber",null,"number=?",new String[]{ number },null,null,null);
         if (cursor.moveToNext()){
             cursor.close();
             db.close();
@@ -90,8 +91,7 @@ public class BlackNumberDao {
     public int getBlackContactMode(String number){
         Log.d("incoming phonenumber",number);
         SQLiteDatabase db = blackNumberOpenHelper.getReadableDatabase();
-        Cursor cursor = db.query("blacknumber",new String[]{"mode"},"number=?",
-                new String[]{number},null,null,null);
+        Cursor cursor = db.query("blacknumber",new String[]{"mode"},"number=?",new String[]{ number },null,null,null);
         int mode = 0;
         if (cursor.moveToNext()){
             mode = cursor.getInt(cursor.getColumnIndex("mode"));
@@ -110,5 +110,5 @@ public class BlackNumberDao {
         db.close();
         return count;
     }
-}
 
+}
