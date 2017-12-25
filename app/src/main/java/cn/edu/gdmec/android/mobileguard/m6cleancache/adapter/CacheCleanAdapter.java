@@ -1,21 +1,17 @@
 package cn.edu.gdmec.android.mobileguard.m6cleancache.adapter;
 
-/**
- * Created by GJ on 2017/11/26.
- */
+import android.content.Context;
+import android.text.format.Formatter;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.BaseAdapter;
+import android.widget.ImageView;
+import android.widget.TextView;
 
-        import android.content.Context;
-        import android.text.format.Formatter;
-        import android.view.View;
-        import android.view.ViewGroup;
-        import android.widget.BaseAdapter;
-        import android.widget.ImageView;
-        import android.widget.TextView;
+import java.util.List;
 
-        import java.util.List;
-
-        import cn.edu.gdmec.android.mobileguard.R;
-        import cn.edu.gdmec.android.mobileguard.m6cleancache.entity.CacheInfo;
+import cn.edu.gdmec.android.mobileguard.R;
+import cn.edu.gdmec.android.mobileguard.m6cleancache.entity.CacheInfo;
 
 
 public class CacheCleanAdapter extends BaseAdapter {

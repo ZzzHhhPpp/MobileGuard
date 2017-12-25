@@ -29,14 +29,15 @@
             android:button="@null"
             android:layout_marginLeft="15dp"
             android:background="@drawable/circle_purple_bg_selector"/>
-        <RadioButton
-            android:id="@+id/rb_four"
-            android:layout_width="10dp"
-            android:layout_height="10dp"
-            android:button="@null"
-            android:layout_marginLeft="15dp"
-            android:background="@drawable/circle_purple_bg_selector"/>
+            <RadioButton
+                android:id="@+id/rb_four"
+                android:layout_width="10dp"
+                android:layout_height="10dp"
+                android:button="@null"
+                android:layout_marginLeft="15dp"
+                android:background="@drawable/circle_purple_bg_selector" />
 
-    </RadioGroup>
+        </RadioGroup>
+
 
 </LinearLayout>

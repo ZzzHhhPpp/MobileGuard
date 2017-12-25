@@ -1,8 +1,5 @@
 package cn.edu.gdmec.android.mobileguard.m6cleancache;
 
-/**
- * Created by GJ on 2017/11/26.
- */
 import android.content.Intent;
 import android.content.pm.IPackageStatsObserver;
 import android.content.pm.PackageInfo;
@@ -34,9 +31,7 @@ public class CacheClearListActivity extends AppCompatActivity implements View.On
     protected static final int SCANNING = 100;
     protected static final int FINISH = 101;
     private AnimationDrawable animation;
-    /** 建议清理 */
     private TextView mRecomandTV;
-    /** 可清理 */
     private TextView mCanCleanTV;
     private long cacheMemory;
     private List<CacheInfo> cacheInfos = new ArrayList<CacheInfo>();
@@ -55,15 +50,12 @@ public class CacheClearListActivity extends AppCompatActivity implements View.On
                     mRecomandTV.setText("正在扫描： "+info.packageName);
                     mCanCleanTV.setText("已扫描缓存 ："+
                             Formatter.formatFileSize(CacheClearListActivity.this, cacheMemory));
-                    //在主线程添加变化后集合
                     mCacheInfos.clear();
                     mCacheInfos.addAll(cacheInfos);
-                    //ListView  刷新
                     adapter.notifyDataSetChanged();
                     mCacheLV.setSelection(mCacheInfos.size());
                     break;
                 case FINISH:
-                    //扫描完了，动画停止
                     animation.stop();
                     if(cacheMemory >0){
                         mCacheBtn.setEnabled(true);
@@ -85,9 +77,7 @@ public class CacheClearListActivity extends AppCompatActivity implements View.On
         initView();
     }
 
-    /***
-     * 初始化控件
-     */
+
     private void initView() {
         findViewById(R.id.rl_titlebar).setBackgroundColor(
                 getResources().getColor(R.color.rose_red));
@@ -108,9 +98,6 @@ public class CacheClearListActivity extends AppCompatActivity implements View.On
         mCacheLV.setAdapter(adapter);
         fillData();
     }
-    /***
-     * 填充数据
-     */
     private void fillData() {
         thread = new Thread() {
             public void run() {
@@ -136,12 +123,6 @@ public class CacheClearListActivity extends AppCompatActivity implements View.On
         };
         thread.start();
     }
-    /**
-     * 获取某个包名对应的应用程序的缓存大小
-     *
-     * @param info
-     *            应用程序的包信息
-     */
     public void getCacheSize(PackageInfo info) {
         try {
             Method method = PackageManager.class.getDeclaredMethod(
@@ -184,9 +165,7 @@ public class CacheClearListActivity extends AppCompatActivity implements View.On
                 break;
             case R.id.btn_cleanall:
                 if(cacheMemory >0){
-                    //跳转至清理缓存的页面的Activity
                     Intent intent = new Intent(this,CleanCacheActivity.class);
-                    //将要清理的垃圾大小传递至另一个页面
                     intent.putExtra("cacheMemory", cacheMemory);
                     startActivity(intent);
                     finish();
@@ -204,3 +183,4 @@ public class CacheClearListActivity extends AppCompatActivity implements View.On
         }
     }
 }
+//m6修改1

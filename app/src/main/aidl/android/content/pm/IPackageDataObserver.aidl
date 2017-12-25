@@ -1,4 +1,3 @@
-// IPackageDataObserver.aidl
 package android.content.pm;
 
 oneway interface IPackageDataObserver {

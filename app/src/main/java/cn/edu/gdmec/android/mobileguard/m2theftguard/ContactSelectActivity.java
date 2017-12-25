@@ -17,8 +17,6 @@ import cn.edu.gdmec.android.mobileguard.m2theftguard.adapter.ContactAdapter;
 import cn.edu.gdmec.android.mobileguard.m2theftguard.entity.ContactInfo;
 import cn.edu.gdmec.android.mobileguard.m2theftguard.utils.ContactInfoParser;
 
-
-
 public class ContactSelectActivity extends AppCompatActivity implements View.OnClickListener{
     private ListView mListView;
     private ContactAdapter adapter;
@@ -54,7 +52,9 @@ public class ContactSelectActivity extends AppCompatActivity implements View.OnC
                 systemContacts = ContactInfoParser.getSystemContact(ContactSelectActivity.this);
                 systemContacts.addAll(ContactInfoParser.getSimContacts(ContactSelectActivity.this));
                 mHandler.sendEmptyMessage(10);
-            };
+            }
+
+            ;
         }.start();
         mListView.setOnItemClickListener(new AdapterView.OnItemClickListener(){
             @Override

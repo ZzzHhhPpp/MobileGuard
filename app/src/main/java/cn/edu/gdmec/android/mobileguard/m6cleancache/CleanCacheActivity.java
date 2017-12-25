@@ -1,9 +1,5 @@
 package cn.edu.gdmec.android.mobileguard.m6cleancache;
 
-/**
- * Created by GJ on 2017/11/26.
- */
-
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.graphics.drawable.AnimationDrawable;
@@ -63,9 +59,7 @@ public class CleanCacheActivity extends AppCompatActivity implements View.OnClic
         cacheMemory = intent.getLongExtra("cacheMemory", 0);
         initData();
     }
-    /***
-     * 初始化数据
-     */
+
     private void initData() {
         cleanAll();
         new Thread(){
@@ -96,13 +90,10 @@ public class CleanCacheActivity extends AppCompatActivity implements View.OnClic
         String cacheMemoryStr=Formatter.formatFileSize(this, memory);
         String memoryStr;
         String memoryUnit;
-        //根据大小判定单位
         if(memory >900){
-            //大于900则单位两位
             memoryStr = cacheMemoryStr.substring(0, cacheMemoryStr.length()-2);
             memoryUnit = cacheMemoryStr.substring(cacheMemoryStr.length()-2, cacheMemoryStr.length());
         }else{
-            //单位是一位
             memoryStr = cacheMemoryStr.substring(0, cacheMemoryStr.length()-1);
             memoryUnit = cacheMemoryStr.substring(cacheMemoryStr.length()-1, cacheMemoryStr.length());
         }
@@ -144,10 +135,7 @@ public class CleanCacheActivity extends AppCompatActivity implements View.OnClic
                                       final boolean succeeded) {
         }
     }
-
     private void cleanAll(){
-        //清除全部 缓存 利用Android系统的一个漏洞。 freeStorageAndNotify
-        //然而android6之后，这个漏洞已经被封堵了，完全无效。
         Method[] methods = PackageManager.class.getMethods();
         for(Method method:methods){
             if("freeStorageAndNotify".equals(method.getName())){

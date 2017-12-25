@@ -1,4 +1,3 @@
-// IPackageStatsObserver.aidl
 package android.content.pm;
 
 import android.content.pm.PackageStats;
