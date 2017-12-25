@@ -46,6 +46,9 @@ public class EnterPswActivity extends AppCompatActivity implements View.OnClickL
             e.printStackTrace();
         }
     }
+    /**
+     * 初始化控件
+     */
     private void initView() {
         mAppIcon = (ImageView) findViewById(R.id.imgv_appicon_enterpsw);
         mAppNameTV = (TextView) findViewById(R.id.tv_appname_enterpsw);
@@ -59,7 +62,7 @@ public class EnterPswActivity extends AppCompatActivity implements View.OnClickL
     public void onClick(View view) {
         switch (view.getId()) {
             case R.id.imgv_go_enterpsw:
-
+                //比较密码
                 String inputpsw = mPswET.getText().toString().trim();
                 if(TextUtils.isEmpty(inputpsw)){
                     startAnim();
@@ -68,7 +71,7 @@ public class EnterPswActivity extends AppCompatActivity implements View.OnClickL
                 }else{
                     if(!TextUtils.isEmpty(password)){
                         if(MD5Utils.encode(inputpsw).equals(password)){
-
+                            //发送自定义的广播消息。
                             Intent intent = new Intent();
                             intent.setAction(App.APPLOCK_ACTION);
                             intent.putExtra("packagename",packagename);

@@ -28,7 +28,7 @@ public class AdvancedToolsView extends RelativeLayout {
     }
     public AdvancedToolsView(Context context, AttributeSet attrs) {
         super(context, attrs);
-
+        //拿到属性对象的值
         TypedArray mTypedArray = context.obtainStyledAttributes(attrs,
                 R.styleable.AdvancedToolsView);
         desc = mTypedArray.getString(R.styleable.AdvancedToolsView_desc);
@@ -36,8 +36,12 @@ public class AdvancedToolsView extends RelativeLayout {
         mTypedArray.recycle();
         init(context);
     }
-
+    /**
+     * 控件初始化
+     * @param context
+     */
     private void init(Context context) {
+        //将资源转化成view对象显示在自己身上
         View view  = View.inflate(context, R.layout.ui_advancedtools_view, null);
         this.addView(view);
         mDesriptionTV = (TextView) findViewById(R.id.tv_decription);

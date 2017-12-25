@@ -17,6 +17,7 @@ public class AdvancedToolsActivity extends AppCompatActivity implements View.OnC
         setContentView(R.layout.activity_advanced_tools);
         initView();
     }
+    /**初始化控件*/
     private void initView() {
         findViewById(R.id.rl_titlebar).setBackgroundColor(
                 getResources().getColor(R.color.bright_red));
@@ -38,16 +39,19 @@ public class AdvancedToolsActivity extends AppCompatActivity implements View.OnC
                 finish();
                 break;
             case R.id.advanceview_numbelongs:
-
+                //进入归属地查询页面
                 startActivity(NumBelongtoActivity.class);
                 break;
             case R.id.advanceview_applock:
-
+                //进入程序锁页面
                 startActivity(AppLockActivity.class);
                 break;
         }
     }
-
+    /**
+     * 开启新的activity不关闭自己
+     * @param cls 新的activity的字节码
+     */
     public void startActivity(Class<?> cls){
         Intent intent = new Intent(this,cls);
         startActivity(intent);

@@ -32,7 +32,9 @@ public class NumBelongtoActivity extends AppCompatActivity implements View.OnCli
         copyDB(dbName);
     }
 
-
+    /**
+     * 初始化控件
+     */
     private void initView() {
         findViewById(R.id.rl_titlebar).setBackgroundColor(
                 getResources().getColor(R.color.bright_red));
@@ -57,7 +59,7 @@ public class NumBelongtoActivity extends AppCompatActivity implements View.OnCli
 
             @Override
             public void afterTextChanged(Editable s) {
-
+                //文本变化之后
                 String string = s.toString().toString().trim();
                 if (string.length() == 0) {
                     mResultTV.setText("");
@@ -73,15 +75,16 @@ public class NumBelongtoActivity extends AppCompatActivity implements View.OnCli
                 break;
 
             case R.id.btn_searchnumbelongto:
-
+                //判断edittext中的号码是否为空
+                //判断数据库是否存在
                 String phonenumber = mNumET.getText().toString().trim();
                 if (!TextUtils.isEmpty(phonenumber)) {
                     File file = new File(getFilesDir(), dbName);
                     if (!file.exists() || file.length() <= 0) {
-
+                        //数据库不存在,复制数据库
                         copyDB(dbName);
                     }
-
+                    //查询数据库
                     String location = NumBelongtoDao.getLocation(this,phonenumber);
                     mResultTV.setText("归属地： " + location);
                 } else {
@@ -91,6 +94,11 @@ public class NumBelongtoActivity extends AppCompatActivity implements View.OnCli
         }
     }
 
+    /**
+     * 拷贝资产目录下的数据库文件
+     *
+     * @param dbname 数据库文件的名称
+     */
     private void copyDB(final String dbname) {
         new Thread() {
             public void run() {
